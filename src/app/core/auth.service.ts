@@ -34,6 +34,7 @@ export class AuthService {
       }
     });
 
+    // Update user when token oidc-client refreshes token
     this._userManager.events.addUserLoaded(_ => {
       this._userManager.getUser().then(user => {
         this._user = user;
@@ -59,6 +60,7 @@ export class AuthService {
   }
 
   signoutRedirectCallback(): Promise<any> {
+    // You can provide a callback after the promise resolves if you want
     return this._userManager.signoutRedirectCallback();
   }
 
